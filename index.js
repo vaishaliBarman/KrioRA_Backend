@@ -32,5 +32,7 @@ app.use('/', router)
 app.use('/favorites', favRouter)
 app.use('/', EventRouter)
 
+ 
+
 app.listen(POST, ()=> console.log(`Server is running on port ${POST}`))
  
