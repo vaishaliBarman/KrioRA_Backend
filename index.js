@@ -28,9 +28,9 @@ mongoose.connect(DataBase)
 .then(()=> console.log('Database connected'))
 .catch(err => console.log(err, 'Database not connected'))
 //router
-app.use('/', router)
+app.use('/user', router)
 app.use('/favorites', favRouter)
-app.use('/', EventRouter)
+app.use('/event', EventRouter)
 
  
 
