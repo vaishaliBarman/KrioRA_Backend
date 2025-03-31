@@ -9,8 +9,16 @@ import favRouter from './routers/rt_fav.js'
 dotenv.config();
 const app = express();
  
+// app.use(cors({
+//   origin:  "http://localhost:5173",
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   credentials: true
+// }))
+// app.use(express.json())
 app.use(cors({
-  origin:  "http://localhost:5173",
+  origin: process.env.NODE_ENV === 'production' 
+    ? ["https://krio-ra-vaishali-s-projects.vercel.app/", "http://localhost:5173"] 
+    : "http://localhost:5173",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }))
@@ -32,6 +40,9 @@ app.use('/user', router)
 app.use('/favorites', favRouter)
 app.use('/event', EventRouter)
 
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully!");
+});
  
 
 app.listen(POST, ()=> console.log(`Server is running on port ${POST}`))
